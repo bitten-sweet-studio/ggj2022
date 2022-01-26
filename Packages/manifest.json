@@ -1,6 +1,8 @@
 {
   "dependencies": {
     "com.cysharp.unitask": "2.2.5",
+    "com.niscolas.odin-inspector-attributes": "https://github.com/niscolas/odin-inspector-attributes.git",
+    "com.niscolas.unity-utils.core": "https://github.com/niscolas/unity-utils-core.git",
     "com.unity-atoms.unity-atoms-base-atoms": "4.4.3",
     "com.unity-atoms.unity-atoms-core": "4.4.3",
     "com.unity-atoms.unity-atoms-input-system": "4.4.3",
@@ -10,6 +12,7 @@
     "com.unity.cinemachine": "2.8.4",
     "com.unity.ide.rider": "3.0.7",
     "com.unity.ide.vscode": "1.2.4",
+    "com.unity.probuilder": "5.0.3",
     "com.unity.render-pipelines.universal": "12.1.2",
     "com.unity.search.extensions": "https://github.com/Unity-Technologies/com.unity.search.extensions.git?path=package",
     "com.unity.textmeshpro": "3.0.6",
