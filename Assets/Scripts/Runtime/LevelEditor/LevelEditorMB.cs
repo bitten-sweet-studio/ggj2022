@@ -5,7 +5,7 @@ using UnityEngine;
 public class LevelEditorMB : CachedMB
 {
     [SerializeField]
-    private BlockContainerGridMB _grid;
+    private LevelCellGridMB _grid;
 
     [SerializeField]
     private Transform _blocksParent;
@@ -14,23 +14,37 @@ public class LevelEditorMB : CachedMB
 
     public static readonly ISpawnService SpawnService = new UnityInstantiateService();
 
-    public void Place(BlockMB blockPrefab, Vector3 worldPosition)
+    public void Place(int layerNumber, BlockMB blockPrefab, Vector3 worldPosition)
     {
-        if (!_grid.Grid.TryGetByWorldPosition(worldPosition, out BlockContainer blockContainer))
+        if (!_grid.Grid.TryGetByWorldPosition(worldPosition, out LevelCell levelCell))
         {
             return;
         }
 
-        blockContainer.SetBlock(SpawnService.Spawn(blockPrefab, _blocksParent));
+        levelCell.SetBlock(
+            SpawnService.Spawn(blockPrefab, levelCell.GetWorldPosition(), Quaternion.identity, _blocksParent));
     }
 
-    public void Erase(Vector3 worldPosition)
+    public void EraseTopMostLayer(Vector3 worldPosition)
     {
-        if (!_grid.Grid.TryGetByWorldPosition(worldPosition, out BlockContainer blockContainer))
+        if (!_grid.Grid.TryGetByWorldPosition(worldPosition, out LevelCell levelCell))
         {
             return;
         }
 
-        blockContainer.Destroy();
+        if (levelCell.TryGetTopMostLayer(out LevelCellLayer topMostLayer))
+        {
+            topMostLayer.Destroy();
+        }
+    }
+
+    public void Erase(int layerNumber, Vector3 worldPosition)
+    {
+        if (!_grid.Grid.TryGetByWorldPosition(worldPosition, out LevelCell blockContainer))
+        {
+            return;
+        }
+
+        blockContainer.DestroyLayer(layerNumber);
     }
 }

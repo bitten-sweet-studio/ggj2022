@@ -54,7 +54,7 @@ public class LevelEditorInputMB : CachedMB
 
     private void EraseHoveredBlock()
     {
-        _levelEditor.Erase(GetMousePosition());
+        _levelEditor.EraseTopMostLayer(GetMousePosition());
     }
 
     private Vector2 GetMousePosition()
@@ -74,7 +74,7 @@ public class LevelEditorInputMB : CachedMB
             }
         }
 
-        _levelEditor.Place(_selectedBlock, GetMousePosition());
+        _levelEditor.Place(_selectedBlock.LayerNumber, _selectedBlock, GetMousePosition());
     }
 
     private void OnMouseLeftClickStateChanged(bool value)

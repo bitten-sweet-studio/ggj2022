@@ -1,0 +1,213 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f8caef668dd4fba8592b002c4c31245, type: 3}
+  m_Name: LevelTemplate-Test_1
+  m_EditorClassIdentifier: 
+  _cells:
+  - _layers:
+    - _id: lg
+    _x: 9
+    _y: 11
+  - _layers:
+    - _id: decoration
+    _x: 9
+    _y: 12
+  - _layers:
+    - _id: or
+    _x: 10
+    _y: 10
+  - _layers:
+    - _id: lg
+    _x: 10
+    _y: 11
+  - _layers:
+    - _id: pur
+    _x: 11
+    _y: 9
+  - _layers:
+    - _id: or
+    _x: 11
+    _y: 10
+  - _layers:
+    - _id: lg
+    _x: 11
+    _y: 11
+  - _layers:
+    - _id: red
+    _x: 12
+    _y: 8
+  - _layers:
+    - _id: pur
+    _x: 12
+    _y: 9
+  - _layers:
+    - _id: or
+    _x: 12
+    _y: 10
+  - _layers:
+    - _id: lg
+    _x: 12
+    _y: 11
+  - _layers:
+    - _id: red
+    _x: 13
+    _y: 8
+  - _layers:
+    - _id: pur
+    _x: 13
+    _y: 9
+  - _layers:
+    - _id: or
+    _x: 13
+    _y: 10
+  - _layers:
+    - _id: lg
+    _x: 13
+    _y: 11
+  - _layers:
+    - _id: red
+    _x: 14
+    _y: 8
+  - _layers:
+    - _id: pur
+    _x: 14
+    _y: 9
+  - _layers:
+    - _id: or
+    _x: 14
+    _y: 10
+  - _layers:
+    - _id: lg
+    _x: 14
+    _y: 11
+  - _layers:
+    - _id: red
+    _x: 15
+    _y: 8
+  - _layers:
+    - _id: pur
+    _x: 15
+    _y: 9
+  - _layers:
+    - _id: or
+    _x: 15
+    _y: 10
+  - _layers:
+    - _id: lg
+    _x: 15
+    _y: 11
+  - _layers:
+    - _id: red
+    _x: 16
+    _y: 8
+  - _layers:
+    - _id: pur
+    _x: 16
+    _y: 9
+  - _layers:
+    - _id: or
+    _x: 16
+    _y: 10
+  - _layers:
+    - _id: lg
+    _x: 16
+    _y: 11
+  - _layers:
+    - _id: red
+    _x: 17
+    _y: 8
+  - _layers:
+    - _id: pur
+    _x: 17
+    _y: 9
+  - _layers:
+    - _id: or
+    _x: 17
+    _y: 10
+  - _layers:
+    - _id: lg
+    _x: 17
+    _y: 11
+  - _layers:
+    - _id: red
+    _x: 18
+    _y: 8
+  - _layers:
+    - _id: pur
+    _x: 18
+    _y: 9
+  - _layers:
+    - _id: or
+    _x: 18
+    _y: 10
+  - _layers:
+    - _id: lg
+    - _id: decoration
+    _x: 18
+    _y: 11
+  - _layers:
+    - _id: decoration
+    _x: 18
+    _y: 12
+  - _layers:
+    - _id: red
+    _x: 19
+    _y: 8
+  - _layers:
+    - _id: pur
+    _x: 19
+    _y: 9
+  - _layers:
+    - _id: or
+    _x: 19
+    _y: 10
+  - _layers:
+    - _id: lg
+    - _id: decoration
+    _x: 19
+    _y: 11
+  - _layers:
+    - _id: red
+    _x: 20
+    _y: 8
+  - _layers:
+    - _id: pur
+    _x: 20
+    _y: 9
+  - _layers:
+    - _id: or
+    _x: 20
+    _y: 10
+  - _layers:
+    - _id: decoration
+    _x: 20
+    _y: 11
+  - _layers:
+    - _id: red
+    _x: 21
+    _y: 8
+  - _layers:
+    - _id: pur
+    _x: 21
+    _y: 9
+  - _layers:
+    - _id: decoration
+    _x: 21
+    _y: 10
+  - _layers:
+    - _id: red
+    _x: 22
+    _y: 8
+  - _layers:
+    - _id: decoration
+    _x: 22
+    _y: 9

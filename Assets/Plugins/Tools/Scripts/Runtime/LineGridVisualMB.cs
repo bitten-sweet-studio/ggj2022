@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace niscolas.UnityUtils.Tools
 {
-    public class LineGridVisualMB : CachedMB
+    public class LineGridVisualMB : AutoTriggerMB
     {
         [SerializeField]
         private GridMB _grid;
@@ -14,16 +14,19 @@ namespace niscolas.UnityUtils.Tools
         [SerializeField]
         private Transform _cellsParent;
 
-        protected override void Awake()
+        public override void Do()
         {
-            base.Awake();
-
-            _grid.InternalGridCreated += SetGrid;
+            SetGrid(_grid.BaseGrid);
         }
 
-        private void OnDestroy()
+        private void OnEnable()
         {
-            _grid.InternalGridCreated -= SetGrid;
+            _cellsParent.gameObject.SetActive(true);
+        }
+
+        private void OnDisable()
+        {
+            _cellsParent.gameObject.SetActive(false);
         }
 
         public void SetGrid(Grid grid)

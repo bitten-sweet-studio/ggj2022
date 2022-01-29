@@ -32,11 +32,13 @@ namespace niscolas.UnityUtils.Tools
 
         public Grid<T> Grid { get; private set; }
 
-        protected abstract T CreateCell(int x,int y, Grid<T> grid);
+        protected abstract T CreateCell(int x, int y, Grid<T> grid);
         protected virtual void AfterGridCreated() { }
 
-        private void Start()
+        protected override void Awake()
         {
+            base.Awake();
+
             Grid = new Grid<T>(
                 _width,
                 _height,
@@ -45,7 +47,7 @@ namespace niscolas.UnityUtils.Tools
                 CreateCell);
 
             NotifyInternalGridCreated();
-            
+
             AfterGridCreated();
         }
     }

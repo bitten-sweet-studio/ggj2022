@@ -512,9 +512,10 @@ GameObject:
   - component: {fileID: 1125533924}
   - component: {fileID: 1125533923}
   - component: {fileID: 1125533926}
-  - component: {fileID: 1125533927}
   - component: {fileID: 1125533928}
+  - component: {fileID: 1125533927}
   - component: {fileID: 1125533929}
+  - component: {fileID: 1125533930}
   m_Layer: 0
   m_Name: LevelEditor
   m_TagString: Untagged
@@ -601,10 +602,12 @@ MonoBehaviour:
     _variable: {fileID: 0}
     _variableInstancer: {fileID: 0}
   _possibleBlocks:
-  - {fileID: 3950998995074454603, guid: 9203be2c303af3243bb8ce1441cf8128, type: 3}
-  - {fileID: 3950998995074454603, guid: 2f5d9b2b77b166446b6cd420ef057865, type: 3}
-  - {fileID: 3950998995074454603, guid: eb04c287807575e48b3da4a473b665db, type: 3}
-  - {fileID: 3950998995074454603, guid: cb2a014b57671fe47aea5dbd2295a0cf, type: 3}
+  - {fileID: 462725050718864574, guid: a86dbba36f4626d47a115bab0130c918, type: 3}
+  - {fileID: 462725050718864574, guid: b2708c81e90aa214abc6b6c237a4bd31, type: 3}
+  - {fileID: 462725050718864574, guid: 3202b5961804fbd4c95c63ee32af50fb, type: 3}
+  - {fileID: 462725050718864574, guid: ec5a7df8e10d0154ebd4d18d8eb092cd, type: 3}
+  - {fileID: 118055759100732668, guid: b97e9774e2e4cd546a55ea3a36751b5c, type: 3}
+  - {fileID: 5177873391978395058, guid: 3136cc5ed785c4742ac7c97b30c91140, type: 3}
   _selectedBlock: {fileID: 0}
 --- !u!114 &1125533925
 MonoBehaviour:
@@ -632,6 +635,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a6eeb0fa04a49559109b4b79ae7710c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _autoTriggerCallback: 3
   _grid: {fileID: 1125533923}
   _cellPrefab: {fileID: 2661339147287931650, guid: 42ce24e256b9ff34b99ec0096ae23d9e, type: 3}
   _cellsParent: {fileID: 521350172}
@@ -662,10 +666,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _content:
-  - {fileID: 3950998995074454603, guid: 9203be2c303af3243bb8ce1441cf8128, type: 3}
-  - {fileID: 3950998995074454603, guid: 2f5d9b2b77b166446b6cd420ef057865, type: 3}
-  - {fileID: 3950998995074454603, guid: eb04c287807575e48b3da4a473b665db, type: 3}
-  - {fileID: 3950998995074454603, guid: cb2a014b57671fe47aea5dbd2295a0cf, type: 3}
+  - {fileID: 462725050718864574, guid: a86dbba36f4626d47a115bab0130c918, type: 3}
+  - {fileID: 462725050718864574, guid: b2708c81e90aa214abc6b6c237a4bd31, type: 3}
+  - {fileID: 462725050718864574, guid: 3202b5961804fbd4c95c63ee32af50fb, type: 3}
+  - {fileID: 462725050718864574, guid: ec5a7df8e10d0154ebd4d18d8eb092cd, type: 3}
+  - {fileID: 118055759100732668, guid: b97e9774e2e4cd546a55ea3a36751b5c, type: 3}
+  - {fileID: 5177873391978395058, guid: 3136cc5ed785c4742ac7c97b30c91140, type: 3}
 --- !u!114 &1125533929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -681,7 +687,45 @@ MonoBehaviour:
   _levelEditor: {fileID: 1125533925}
   _grid: {fileID: 1125533923}
   _blockDirectory: {fileID: 1125533928}
-  _levelToLoad: {fileID: 0}
+  _levelTemplate: {fileID: 0}
+--- !u!114 &1125533930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1125533918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33c90d13c4f54fcdb4058d3bb67d8fc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _autoTriggerCallback: 3
+  _levelEditorLoadManager: {fileID: 1125533929}
+  _levelTemplate: {fileID: 11400000, guid: b5307e57b32869947992a85a0dcd603c, type: 2}
+  _playingGameMode: {fileID: 11400000, guid: 6ca22f66aac5bba4db251fbcc5d8fd4d, type: 2}
+  _levelEditorGameMode: {fileID: 11400000, guid: dba3ea070c5cb914ea1f85e8d5b25a96, type: 2}
+  _currentGameMode:
+    _usage: 2
+    _value: {fileID: 0}
+    _constant: {fileID: 0}
+    _variable: {fileID: 11400000, guid: 1d37e3c1db3255b469ec87d714f266bf, type: 2}
+    _variableInstancer: {fileID: 0}
+  _onLevelLoaded:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1125533926}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1551926606
 GameObject:
   m_ObjectHideFlags: 0

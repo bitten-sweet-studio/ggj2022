@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using NaughtyAttributes;
 using niscolas.UnityUtils.Core;
 using niscolas.UnityUtils.Core.Extensions;
@@ -9,7 +10,7 @@ using UnityEngine;
 public class LevelEditorSaveManagerMB : CachedMB
 {
     [SerializeField]
-    private BlockContainerGridMB _grid;
+    private LevelCellGridMB _grid;
 
     [SerializeField]
     private LevelEditorMB _levelEditor;
@@ -18,9 +19,9 @@ public class LevelEditorSaveManagerMB : CachedMB
     public void Save()
     {
         LevelTemplateSO levelTemplate = ScriptableObject.CreateInstance<LevelTemplateSO>();
-        levelTemplate.Blocks = _grid.Grid
-            .Where(x => !x.Block.IsUnityNull())
-            .Map(ExtractBlockSaveData)
+        levelTemplate.Cells = _grid.Grid
+            .Where(x => x.Layers.Count > 0)
+            .Map(ExtractCellSaveData)
             .ToList();
 
         string fileSavePath = EditorUtility
@@ -34,18 +35,22 @@ public class LevelEditorSaveManagerMB : CachedMB
         levelTemplate.Create(fileSavePath);
     }
 
-    private BlockSaveData ExtractBlockSaveData(BlockContainer blockContainer)
+    private LevelCellSaveData ExtractCellSaveData(LevelCell levelCell)
     {
-        if (!blockContainer.Block)
+        return new LevelCellSaveData
         {
-            return default;
-        }
-
-        return new BlockSaveData
-        {
-            ID = blockContainer.Block.Id,
-            X = blockContainer.X,
-            Y = blockContainer.Y
+            Layers = ExtractLayerSaveData(levelCell.Layers).ToList(),
+            X = levelCell.X,
+            Y = levelCell.Y
         };
+    }
+
+    private IEnumerable<LevelLayerSaveData> ExtractLayerSaveData(IEnumerable<LevelCellLayer> layers)
+    {
+        return layers
+            .Map(x => new LevelLayerSaveData
+            {
+                ID = x.Block.Id,
+            });
     }
 }

@@ -4,11 +4,11 @@ using UnityEngine;
 public class LevelTemplateSO : ScriptableObject
 {
     [SerializeField]
-    private List<BlockSaveData> _blocks;
+    private List<LevelCellSaveData> _cells;
 
-    public List<BlockSaveData> Blocks
+    public List<LevelCellSaveData> Cells
     {
-        get => _blocks;
-        set => _blocks = value;
+        get => _cells;
+        set => _cells = value;
     }
 }

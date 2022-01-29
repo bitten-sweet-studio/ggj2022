@@ -1,5 +1,6 @@
 ﻿using NaughtyAttributes;
 using niscolas.UnityUtils.Core;
+using niscolas.UnityUtils.Core.Extensions;
 using niscolas.UnityUtils.Tools;
 using UnityEngine;
 
@@ -9,30 +10,42 @@ public class LevelEditorLoadManagerMB : CachedMB
     private LevelEditorMB _levelEditor;
 
     [SerializeField]
-    private BlockContainerGridMB _grid;
+    private LevelCellGridMB _grid;
 
     [SerializeField]
     private BlockDirectoryMB _blockDirectory;
 
     [SerializeField]
-    private LevelTemplateSO _levelToLoad;
+    private LevelTemplateSO _levelTemplate;
 
     [Button]
     public void Load()
     {
-        _levelToLoad.Blocks.ForEach(SpawnBlock);
+        Load(_levelTemplate);
     }
 
-    private void SpawnBlock(BlockSaveData blockSaveData)
+    public void Load(LevelTemplateSO levelTemplate)
     {
-        BlockMB blockPrefab = _blockDirectory.FirstWithId(blockSaveData.ID);
+        levelTemplate.Cells.ForEach(LoadLevelCell);
+    }
 
-        if (!_grid.Grid.TryGet(blockSaveData.X, blockSaveData.Y, out BlockContainer blockContainer))
+    private void LoadLevelCell(LevelCellSaveData levelCellSaveData)
+    {
+        levelCellSaveData.Layers
+            .ForEach(x => LoadLevelLayer(levelCellSaveData, x));
+    }
+
+    private void LoadLevelLayer(
+        LevelCellSaveData levelCellSaveData, LevelLayerSaveData levelLayerSaveData)
+    {
+        BlockMB blockPrefab = _blockDirectory.FirstWithId(levelLayerSaveData.ID);
+
+        if (!_grid.Grid.TryGet(levelCellSaveData.X, levelCellSaveData.Y, out LevelCell levelCell))
         {
             return;
         }
 
         BlockMB blockInstance = LevelEditorMB.SpawnService.Spawn(blockPrefab, _levelEditor.BlocksParent);
-        blockContainer.SetBlock(blockInstance);
+        levelCell.SetBlock(blockInstance);
     }
 }
